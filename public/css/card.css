@@ -1,0 +1,29 @@
+<style>
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+.box {
+	margin-top: 5px !important;
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+   border-top: 3px solid hsl(7, 30%, 31%) !important;
+    
+}
+.panel-footer,.panel-heading {
+   
+    background-color: #d2d6de !important;
+    border-color: #563030 !important;
+   
+}
+</style>
