@@ -82,3 +82,13 @@ Route::get('deletes/{id}','TimeController@deletes');
 
 
 });
+
+Route::group(['prefix' =>'employee','middleware' =>'checkSession'], function () {
+Route::get('/','EmployeeController@index');
+Route::post('creates','EmployeeController@creates');
+Route::get('list','EmployeeController@lists');
+Route::get('edit/{id}','EmployeeController@edits');
+Route::post('updates/{id}','EmployeeController@updates');
+Route::get('deletes/{id}','EmployeeController@deletes');
+
+});

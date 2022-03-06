@@ -5,9 +5,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Add Time Slot
+            Employee Record
         </h1>
     </section>
+
 <style type="text/css">
     .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: #463f3f;
@@ -25,7 +26,7 @@
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="box col-md-4">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Update Time Slot</h3>
+                            <h3 class="box-title">Employee Check In / Check Out</h3>
 
                           
                         </div>
@@ -33,7 +34,42 @@
 
                            
                             <div class="form-group">
-                                <label for="name" class="col-sm-3 control-label">Time Slot</label>
+                                <label for="name" class="col-sm-3 control-label">Employee ID</label>
+
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="slot"  type="text" name="slot" value="">
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">Employee Name</label>
+
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="slot"  type="text" name="slot" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">Employee Address</label>
+
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="slot"  type="text" name="slot" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">Employee Contact Number</label>
+
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="slot"  type="text" name="slot" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">Employee Clock In</label>
+
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="slot"  type="text" name="slot" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">Employee Clock Out</label>
 
                                 <div class="col-sm-9">
                                     <input class="form-control" id="slot"  type="text" name="slot" value="">
@@ -64,7 +100,7 @@
             <div class="col-md-6">
                 <div class="box col-md-4">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Time Slot List</h3>
+                        <h3 class="box-title">Employee List</h3>
 
                       
                     </div>
@@ -93,7 +129,12 @@
 
                         <div id="showtable" class="box-body">
                             <table id="level-table" class="table table-striped table-bordered">
-                                <tr><th>ID</th><th> Slot</th><th>Availability</th><th>ACTIONS</th></tr>
+                                <tr><th>ID</th><th>Name</th><th>Address</th><th>Contact Number</th>
+                                <th>Clock In</th>
+                            <th>Clock Out </th>
+                            <th>Availibily </th>
+                            <th>Action</th>
+                        </tr>
 
                             </table>
                         </div>
@@ -125,7 +166,7 @@ $(document).ready(function() {
 
      $(":input").inputmask();
 
- $("#tslot").addClass('active');
+ $("#employee").addClass('active');
 });
 
  
@@ -165,7 +206,7 @@ $(document).ready(function() {
         $.ajax({
 
             method: 'get',
-            url: baseurl + "/time_slot/list?entry=" + entry + "&search=" + search,
+            url: baseurl + "/employee/list?entry=" + entry + "&search=" + search,
             success: function (response) {
                 createTable(response);
             },
