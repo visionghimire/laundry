@@ -18,6 +18,10 @@ class BookingController extends Controller
     return view('booking.index');
  }
 
+ public function dash(){
+    return view("main");
+ }
+
  public function dashboard(Request $request){
     $type=DB::table('laundry_categories')->get();
     $slot=DB::table("time_slot")->get();
@@ -31,11 +35,17 @@ class BookingController extends Controller
  public function getreport(Request $request){
     $fd=$request->input("fd");
       $td=$request->input("td");
+
       if($fd!=null && $td!=null){
          $item=DB::table("booking")
       ->whereBetween('booking.created_at', [$fd, $td]) 
       ->get();
-      }else{
+      }else if($fd!=null && $td==null){
+         $item=DB::table("booking")
+      ->where('booking.created_at','LIKE',"$fd%") 
+      ->get();
+      }
+      else{
          $item=DB::table("booking")
       // ->whereBetween('inventory.created_at', [$fd, $td]) 
       ->get();

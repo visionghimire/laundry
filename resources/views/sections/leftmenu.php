@@ -7,7 +7,7 @@
         <!--<li class="header">MAIN NAVIGATION</li>-->
         <!-- <li class="treeview"> -->
          <li id="userdashboard">
-        <a href="<?php echo url('/');?>">
+        <a href="<?php echo url('/dashboard');?>">
         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         <span class="pull-right-container">
         </span>

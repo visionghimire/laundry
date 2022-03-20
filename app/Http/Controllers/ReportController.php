@@ -27,6 +27,7 @@ class ReportController extends Controller {
     public function getReport(Request $request){
       $fd=$request->input("fd");
       $td=$request->input("td");
+      // dd($td);
       if($fd!=null && $td!=null){
         $item=DB::table("inventory")->select('inventory.*','stock_list.name')
       ->join('stock_list','stock_list.id','=','inventory.supply_id')

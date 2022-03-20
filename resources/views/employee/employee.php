@@ -33,53 +33,47 @@
                         <div class="box-body">
 
                            
-                            <div class="form-group">
-                                <label for="name" class="col-sm-3 control-label">Employee ID</label>
-
-                                <div class="col-sm-9">
-                                    <input class="form-control" id="slot"  type="text" name="slot" value="">
-                                </div>
-                            </div>
+                            
                              <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Employee Name</label>
 
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="slot"  type="text" name="slot" value="">
+                                    <input class="form-control" id="name"  type="text" name="name" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Employee Address</label>
 
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="slot"  type="text" name="slot" value="">
+                                    <input class="form-control" id="address"  type="text" name="address" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Employee Contact Number</label>
 
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="slot"  type="text" name="slot" value="">
+                                    <input class="form-control" id="contact_number"  type="text" name="contact_number" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Employee Clock In</label>
 
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="slot"  type="text" name="slot" value="">
+                                    <input class="form-control" id="clock_in"  type="text" name="clock_in" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Employee Clock Out</label>
 
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="slot"  type="text" name="slot" value="">
+                                    <input class="form-control" id="clock_out"  type="text" name="clock_out" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Availability</label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control" id="status" name="status">
+                                    <select class="form-control" id="availability" name="availability">
                                         <option value="1">Yes</option>
                                         <option value="0">N0</option>
                                     </select>
@@ -185,7 +179,7 @@ $(document).ready(function() {
         $.ajax({
 
             method: 'get',
-            url: baseurl + "/time_slot/list?entry=" + entry + "&page=" + page + "&search=" + search,
+            url: baseurl + "/employee/list?entry=" + entry + "&page=" + page + "&search=" + search,
             success: function (response) {
                 createTable(response);
 
@@ -229,18 +223,22 @@ $(document).ready(function() {
             var row = t.insertRow(rowCount);
 
             row.insertCell(0).innerHTML = data[i].id;
-            row.insertCell(1).innerHTML = data[i].slot;
-            if(data[i].status==1){
-                 row.insertCell(2).innerHTML = "YES";
+            row.insertCell(1).innerHTML = data[i].name;
+             row.insertCell(2).innerHTML = data[i].address;
+              row.insertCell(3).innerHTML = data[i].contact_number;
+               row.insertCell(4).innerHTML = data[i].clock_in;
+                row.insertCell(5).innerHTML = data[i].clock_out;
+            if(data[i].availability==1){
+                 row.insertCell(6).innerHTML = "YES";
             }else{
-                 row.insertCell(2).innerHTML = "NO";
+                 row.insertCell(6).innerHTML = "NO";
             }
            
            
             
            
             // row.insertCell(2).innerHTML=resp[i].opening_date;
-            row.insertCell(3).innerHTML = "<a href='javascript:void(0)' onclick='edit(" + data[i].id + ")' class='btn btn-xs btn-primary' ><i class='glyphicon glyphicon-edit'></i>Edit</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='delt(" + data[i].id + ")' class='btn btn-xs btn-danger' ><i class='glyphicon glyphicon-trash'></i>Delete</a>";
+            row.insertCell(7).innerHTML = "<a href='javascript:void(0)' onclick='edit(" + data[i].id + ")' class='btn btn-xs btn-primary' ><i class='glyphicon glyphicon-edit'></i>Edit</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='delt(" + data[i].id + ")' class='btn btn-xs btn-danger' ><i class='glyphicon glyphicon-trash'></i>Delete</a>";
             rowCount++;
 
         }
@@ -256,9 +254,9 @@ $(document).ready(function() {
         e.preventDefault();
         if ($('#id').val() == "") {
 
-            var url = baseurl + "/time_slot/creates";
+            var url = baseurl + "/employee/creates";
         } else {
-            var url = baseurl + "/time_slot/updates/" + id;
+            var url = baseurl + "/employee/updates/" + id;
         }
         $.ajax({
             method: "POST",
@@ -296,7 +294,7 @@ $(document).ready(function() {
         $("#submit").text("Update");
         $.ajax({
             method: 'get',
-            url: baseurl + "/time_slot/edit/" + id,
+            url: baseurl + "/employee/edit/" + id,
             success: function (resp) {
                 assignValues(resp);
                 $('#id').val(resp.id);
@@ -316,7 +314,7 @@ $(document).ready(function() {
         if (conf) {
             $.ajax({
                 method: 'get',
-                url: baseurl + "/time_slot/deletes/" + id,
+                url: baseurl + "/employee/deletes/" + id,
                 success: function (resp) {
                     var a = JSON.parse(resp);
                     toast(a);

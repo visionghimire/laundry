@@ -25,14 +25,11 @@ class EmployeeController extends Controller {
     }
 
      public function creates(Request $request) {
-       $in=$request->input("in_qty");
-       $used=$request->input("used_qty")||0;
-       $rem=$in-$used;
-        $model = new Stock();
+       
+        $model = new Employee();
         if ($model->validate($request->all())) {
             $req = $request->except(['_token']);
             $model->fill($req);
-            $model->remaining_qty=$rem;
             $model->save();
        
 
@@ -53,14 +50,12 @@ class EmployeeController extends Controller {
             $page = 1;
         }
         if ($search == null) {
-            return $items = DB::table('employee')->select('id','inventory.in_qty','inventory.price','inventory.used_qty','stock_list.name')
-            ->Join('stock_list','stock_list.id','=','inventory.supply_id')
+            return $items = DB::table('employee')
             ->paginate($entry, ['*'], 'page', $page);
             // $table=$this->getData($modeltries);
         } else {
 
-            $items = DB::table('inventory')->select('inventory.id','inventory.in_qty','inventory.price','inventory.used_qty','stock_list.name')
-            ->join('stock_list','stock_list.id','inventory.supply_id')
+            $items = DB::table('employee')
                     ->where('id', 'LIKE', "%$search%")
                     ->orwhere('name', 'LIKE', "%$search%")
                     ->paginate($entry, ['*'], 'page', $page);
@@ -69,19 +64,16 @@ class EmployeeController extends Controller {
     }
 
     public function edits($id) {
-        $model = Stock::find($id);
+        $model = Employee::find($id);
         return response()->json($model);
     }
 
     public function updates(Request $request, $id) {
-        $in=$request->input("in_qty");
-       $used=$request->input("used_qty");
-       // dd($used);
-       $rem=$in-$used;
-        $model = Stock::find($id);
+       
+        $model = Employee::find($id);
         if ($model->validate($request->all())) {
             $model->fill($request->all());
-            $model->remaining_qty=$rem;
+          
             $model->save();
 
             return json_encode(['status' => 1, 'title' => "Success", 'text' => "Data Successfully Updated"]);
@@ -91,7 +83,7 @@ class EmployeeController extends Controller {
     }
 
      public function deletes($id) {
-        $model = Stock::find($id);
+        $model = Employee::find($id);
         try {
             $model->delete();
             return json_encode(['status' => 1, 'title' => "success", 'text' => "Data Successfully Deleted"]);

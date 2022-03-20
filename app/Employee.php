@@ -3,7 +3,7 @@
 namespace App;
 
 
-class Booking extends BaseModel
+class Employee extends BaseModel
 {
     protected $table = 'employee';
     protected $primaryKey = 'id';

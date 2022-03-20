@@ -99,7 +99,7 @@ return redirect()->back()->with("msgerror","User doesnot exist.");
         Session::put('role',$a->role);
        Session::put('authStatus',2);
        
-         return view('main');
+         return redirect('/dashboard');
 
      }
 }else{

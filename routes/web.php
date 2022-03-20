@@ -29,6 +29,10 @@ Route::get('deletes/{id}','LaundryTypeController@deletes');
 Route::post('createBooking','LaundryTypeController@createBooking');
 });
 
+Route::group(['prefix' =>'dashboard','middleware' =>'checkSession'], function () {
+    Route::get("/",'BookingController@dash');
+    });
+
 Route::group(['prefix' =>'booking'], function () {
 
 Route::post('creates','BookingController@creates');
