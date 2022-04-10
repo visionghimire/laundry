@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2022 at 07:47 AM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Generation Time: Apr 10, 2022 at 04:39 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -43,8 +42,8 @@ CREATE TABLE `booking` (
   `timeslot` varchar(200) NOT NULL,
   `address` varchar(200) NOT NULL,
   `city` varchar(200) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT '0',
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `status` int(1) NOT NULL DEFAULT 0,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -52,20 +51,20 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`id`, `type`, `service_type`, `unit`, `price`, `total`, `trackingcode`, `fullname`, `email`, `phone`, `pickupdate`, `timeslot`, `address`, `city`, `status`, `created_at`) VALUES
-(2, 1, 'Wash and Fold', 2, 30, 60, '16373926111', 'khagendra niroula', 'admin@admin.com', '9842789482', '2021-11-23', '9AM-12PM', 'anamnagar', 'ktm', 4, '2021-11-20 13:01:51'),
-(3, 3, 'Wash and Fold', 2, 25, 50, '16373926742', 'khagendra niroula', 'admin@admin.com', '9842789482', '2021-11-25', '9AM-12PM', 'anamnagar', 'ktm', 2, '2021-11-20 13:02:54'),
-(4, 1, 'Wash and Fold', 2, 30, 60, '16373927633', 'khagendra niroula', 'admin@admin.com', '9842789482', '2021-11-27', '9AM-12PM', 'anamnagar', 'ktm', 3, '2021-11-20 13:04:23'),
-(5, 4, 'Wash and Iron', 5, 100, 500, '16373928454', 'vision ghimire', 'admin@admin.com', '15181615', '2021-11-20', '12PM-3PM', 'hvhgcg', 'ktm', 4, '2021-11-20 13:05:45'),
-(6, 3, 'Wash and Fold', 2.6, 25, 65, '16374051555', 'asdfasd', 'admin@admin.com', '54345', '2021-11-26', '9AM-12PM', 'dfgdfg', 'dfhdfh', 0, '2021-11-20 16:30:55'),
-(7, 4, 'Wash and Fold', 10.3, 100, 1030, '16374093496', 'asfasdf', 'admin@admin.com', '343333', '2021-11-24', '9AM-12PM', 'sdfsdf', 'sdfsd', 1, '2021-11-20 17:40:49'),
-(8, 3, 'Wash and Fold', 5, 25, 125, '16375547307', 'Mel Pinto', 'admin@admin.com', '9668563256', '2021-11-23', '12PM-3PM', 'philippines', 'manila', 4, '2021-11-22 10:03:50'),
+(2, 1, 'Wash and Fold', 100, 30, 3000, '16373926111', 'khagendra niroula', 'admin@admin.com', '9842789482', '2022-04-23', '9AM-12PM', 'anamnagar', 'ktm', 4, '2021-11-20 13:01:51'),
+(3, 3, 'Wash and Fold', 2, 25, 50, '16373926742', 'khagendra niroula', 'admin@admin.com', '9842789482', '2022-04-23', '9AM-12PM', 'anamnagar', 'ktm', 2, '2021-11-20 13:02:54'),
+(4, 1, 'Wash and Fold', 2, 30, 60, '16373927633', 'khagendra niroula', 'admin@admin.com', '9842789482', '2022-04-23', '9AM-12PM', 'anamnagar', 'ktm', 3, '2021-11-20 13:04:23'),
+(5, 4, 'Wash and Iron', 20, 100, 2000, '16373928454', 'vision ghimire', 'admin@admin.com', '15181615', '2022-04-23', '12PM-3PM', 'hvhgcg', 'ktm', 4, '2021-11-20 13:05:45'),
+(6, 3, 'Wash and Fold', 2.6, 25, 65, '16374051555', 'asdfasd', 'admin@admin.com', '54345', '2022-04-23', '9AM-12PM', 'dfgdfg', 'dfhdfh', 0, '2021-11-20 16:30:55'),
+(7, 4, 'Wash and Fold', 10.3, 100, 1030, '16374093496', 'asfasdf', 'admin@admin.com', '343333', '2022-04-23', '9AM-12PM', 'sdfsdf', 'sdfsd', 1, '2021-11-20 17:40:49'),
+(8, 3, 'Wash and Fold', 100, 25, 2500, '16375547307', 'Mel Pinto', 'admin@admin.com', '9668563256', '2022-04-23', '12PM-3PM', 'philippines', 'manila', 4, '2021-11-22 10:03:50'),
 (9, 1, 'Wash and Fold', 2, 30, 60, '16375557358', 'Lance Asturis', 'admin@admin.com', '9865475632', '2021-11-30', '3PM-6PM', 'Pearl Manila', 'Manila', 4, '2021-11-22 10:20:35'),
 (10, 3, 'Wash and Iron', 6, 25, 150, '16376023549', 'Kalson Karki', 'admin@admin.com', '9845632154', '2021-11-22', '12PM-3PM', 'kapan', 'kathmandu', 3, '2021-11-22 23:17:36'),
 (11, 4, 'Wash and Fold', 5, 100, 500, '16417909729', 'Lucky Trevor', 'trevor@gmail.com', '112233445566', '2022-01-11', '3PM-6PM', '268 Manila', 'Manila', 4, '2022-01-10 10:47:53'),
 (12, 3, 'Wash and Fold', 7, 25, 175, '164223122210', 'Hello', 'hello@gmail.com', '546558569', '2022-01-15', '3PM-6PM', 'santa cruize', 'manila', 4, '2022-01-15 13:05:23'),
 (13, 1, 'Wash and Fold', 5, 30, 150, '164545070611', 'Vision', 'vision@gmail.com', '98545522145', '2022-02-22', '12PM-3PM', 'Pearl Manila', 'Manila', 1, '2022-02-21 19:23:27'),
 (14, 1, 'Wash and Fold', 2, 30, 60, '164727297412', 'khagendra niroula', 'admin@admin.com', '9842789482', '2022-03-14', '2', 'anamnagar', 'ktm', 0, '2022-03-14 21:34:34'),
-(15, 1, 'Wash and Iron', 8, 30, 240, '164862619913', 'Pravin', 'admin@admin.com', '343333', '2022-03-30', '3', 'anamnagar', 'Manila', 0, '2022-03-30 13:28:20');
+(15, 1, 'Wash and Iron', 8, 30, 240, '164862619913', 'Pravin', 'admin@admin.com', '343333', '2022-03-30', '3', 'anamnagar', 'Manila', 1, '2022-03-30 13:28:20');
 
 -- --------------------------------------------------------
 
@@ -93,6 +92,28 @@ INSERT INTO `employee` (`id`, `name`, `address`, `contact_number`, `clock_in`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `expenses`
+--
+
+CREATE TABLE `expenses` (
+  `id` int(10) NOT NULL,
+  `years` int(5) NOT NULL,
+  `months` int(2) NOT NULL,
+  `type` varchar(200) NOT NULL,
+  `price` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `expenses`
+--
+
+INSERT INTO `expenses` (`id`, `years`, `months`, `type`, `price`) VALUES
+(1, 2022, 4, 'rent', 2500),
+(2, 2022, 4, 'salary', 3000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `inventory`
 --
 
@@ -103,7 +124,7 @@ CREATE TABLE `inventory` (
   `price` int(10) NOT NULL,
   `used_qty` int(10) DEFAULT NULL,
   `remaining_qty` int(10) NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -169,14 +190,14 @@ INSERT INTO `laundry_items` (`id`, `laundry_category_id`, `weight`, `laundry_id`
 CREATE TABLE `laundry_list` (
   `id` int(30) NOT NULL,
   `customer_name` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=Pending, 1 = ongoing,2= ready,3= claimed',
+  `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=Pending, 1 = ongoing,2= ready,3= claimed',
   `queue` int(30) NOT NULL,
   `total_amount` double NOT NULL,
-  `pay_status` tinyint(1) DEFAULT '0',
+  `pay_status` tinyint(1) DEFAULT 0,
   `amount_tendered` double NOT NULL,
   `amount_change` double NOT NULL,
   `remarks` text NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -186,6 +207,35 @@ CREATE TABLE `laundry_list` (
 INSERT INTO `laundry_list` (`id`, `customer_name`, `status`, `queue`, `total_amount`, `pay_status`, `amount_tendered`, `amount_change`, `remarks`, `date_created`) VALUES
 (2, 'James Smith', 3, 1, 555, 1, 555, 0, 'None', '2020-09-23 11:54:47'),
 (4, 'Claire Blake', 3, 1, 250, 1, 500, 250, 'None', '2020-09-23 13:29:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `months`
+--
+
+CREATE TABLE `months` (
+  `id` int(10) NOT NULL,
+  `month` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `months`
+--
+
+INSERT INTO `months` (`id`, `month`) VALUES
+(1, 'January'),
+(2, 'February'),
+(3, 'March'),
+(4, 'April'),
+(5, 'May'),
+(6, 'June'),
+(7, 'July'),
+(8, 'August'),
+(9, 'September'),
+(10, 'October'),
+(11, 'November'),
+(12, 'December');
 
 -- --------------------------------------------------------
 
@@ -218,7 +268,7 @@ INSERT INTO `stock_list` (`id`, `name`, `price`) VALUES
 CREATE TABLE `time_slot` (
   `id` int(10) NOT NULL,
   `slot` varchar(100) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT '1'
+  `status` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -268,6 +318,12 @@ ALTER TABLE `employee`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `expenses`
+--
+ALTER TABLE `expenses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `inventory`
 --
 ALTER TABLE `inventory`
@@ -289,6 +345,12 @@ ALTER TABLE `laundry_items`
 -- Indexes for table `laundry_list`
 --
 ALTER TABLE `laundry_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `months`
+--
+ALTER TABLE `months`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -326,6 +388,12 @@ ALTER TABLE `employee`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `expenses`
+--
+ALTER TABLE `expenses`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
@@ -348,6 +416,12 @@ ALTER TABLE `laundry_items`
 --
 ALTER TABLE `laundry_list`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `months`
+--
+ALTER TABLE `months`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `stock_list`

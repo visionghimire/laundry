@@ -17,6 +17,7 @@
         <li id="inventory"><a href="<?php echo url('/inventory');?>"><i class="fa fa-plus"></i>Inventory</a></li>
         <li id="stock"><a href="<?php echo url('/stock');?>"><i class="fa fa-plus"></i>Stock</a></li>
         <li id="employee"><a href="<?php echo url('/employee');?>"><i class="fa fa-plus"></i>Employee</a></li>
+        <li id="exp"><a href="<?php echo url('/expenses');?>"><i class="fa fa-plus"></i>Expenses</a></li>
         <li id="tslot"><a href="<?php echo url('/time_slot');?>"><i class="fa fa-plus"></i>Time Slot</a></li>
         <li id="report"><a href="<?php echo url('/stock-report');?>"><i class="fa fa-plus"></i>Stock Report</a></li>
         <li id="breport"><a href="<?php echo url('/booking/report');?>"><i class="fa fa-plus"></i>Booking Report</a></li>
