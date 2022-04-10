@@ -112,7 +112,7 @@
 					</button>
             <div style="vertical-align:center;">
              <a href="#top" class="wm-logo">
-              <img  alt="Company Name" src="images/mrspin.jpg" width="100" height="100" >
+              <img class="rounded" src="images/mrspin.jpg" width="200px" height="100px" alt="Company Name">
             </a>
           </div>
 				</div>
