@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2022 at 09:17 AM
+-- Generation Time: Apr 10, 2022 at 07:47 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -63,7 +63,9 @@ INSERT INTO `booking` (`id`, `type`, `service_type`, `unit`, `price`, `total`, `
 (10, 3, 'Wash and Iron', 6, 25, 150, '16376023549', 'Kalson Karki', 'admin@admin.com', '9845632154', '2021-11-22', '12PM-3PM', 'kapan', 'kathmandu', 3, '2021-11-22 23:17:36'),
 (11, 4, 'Wash and Fold', 5, 100, 500, '16417909729', 'Lucky Trevor', 'trevor@gmail.com', '112233445566', '2022-01-11', '3PM-6PM', '268 Manila', 'Manila', 4, '2022-01-10 10:47:53'),
 (12, 3, 'Wash and Fold', 7, 25, 175, '164223122210', 'Hello', 'hello@gmail.com', '546558569', '2022-01-15', '3PM-6PM', 'santa cruize', 'manila', 4, '2022-01-15 13:05:23'),
-(13, 1, 'Wash and Fold', 5, 30, 150, '164545070611', 'Vision', 'vision@gmail.com', '98545522145', '2022-02-22', '12PM-3PM', 'Pearl Manila', 'Manila', 1, '2022-02-21 19:23:27');
+(13, 1, 'Wash and Fold', 5, 30, 150, '164545070611', 'Vision', 'vision@gmail.com', '98545522145', '2022-02-22', '12PM-3PM', 'Pearl Manila', 'Manila', 1, '2022-02-21 19:23:27'),
+(14, 1, 'Wash and Fold', 2, 30, 60, '164727297412', 'khagendra niroula', 'admin@admin.com', '9842789482', '2022-03-14', '2', 'anamnagar', 'ktm', 0, '2022-03-14 21:34:34'),
+(15, 1, 'Wash and Iron', 8, 30, 240, '164862619913', 'Pravin', 'admin@admin.com', '343333', '2022-03-30', '3', 'anamnagar', 'Manila', 0, '2022-03-30 13:28:20');
 
 -- --------------------------------------------------------
 
@@ -72,7 +74,7 @@ INSERT INTO `booking` (`id`, `type`, `service_type`, `unit`, `price`, `total`, `
 --
 
 CREATE TABLE `employee` (
-  `id` int(50) NOT NULL,
+  `id` int(10) NOT NULL,
   `name` varchar(100) NOT NULL,
   `address` varchar(100) NOT NULL,
   `contact_number` varchar(50) NOT NULL,
@@ -80,6 +82,13 @@ CREATE TABLE `employee` (
   `clock_out` varchar(50) NOT NULL,
   `availability` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`id`, `name`, `address`, `contact_number`, `clock_in`, `clock_out`, `availability`) VALUES
+(1, 'Rinchin', 'Manila Paco', '9668989898', '10', '5', '0');
 
 -- --------------------------------------------------------
 
@@ -253,6 +262,12 @@ ALTER TABLE `booking`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `inventory`
 --
 ALTER TABLE `inventory`
@@ -302,7 +317,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `employee`
+--
+ALTER TABLE `employee`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `inventory`
@@ -338,7 +359,7 @@ ALTER TABLE `stock_list`
 -- AUTO_INCREMENT for table `time_slot`
 --
 ALTER TABLE `time_slot`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
