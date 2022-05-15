@@ -7,11 +7,10 @@
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <meta http-equiv="cache-control" content="no-cache" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="-1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="-1" />
 
 		
 		<link rel="stylesheet" href="css/animate.min.css">
@@ -28,36 +27,12 @@
 		<script src="js/typed.js"></script>
 		<script src="js/wow.min.js"></script>
 		<script src="js/custom.js"></script>
-         <script src="js/contact.js"></script>
-        <script src="js/order.js"></script>
+        <script src="js/contact.js"></script>
 
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         
-        <!-- firebase-->
-        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-messaging.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-functions.js"></script>
-        
-        <!--end firebase-->
-		
-		<!--favicon-->
-		<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-icon-152x152.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png">
-		<link rel="icon" type="image/png" sizes="192x192"  href="/images/favicon/android-icon-192x192.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/favicon-96x96.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
-		<link rel="manifest" href="/images/favicon/manifest.json">
+              
+        <link rel="manifest" href="/images/favicon/manifest.json">
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/images/favicon/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
@@ -112,7 +87,7 @@
 					</button>
             <div style="vertical-align:center;">
              <a href="#top" class="wm-logo">
-              <img class="rounded" src="images/mrspin.jpg" width="200px" height="100px" alt="Company Name">
+              <img class="rounded" src="images/mrspin.png" width="200px" height="100px" alt="Company Name">
             </a>
           </div>
 				</div>
@@ -274,7 +249,7 @@
             <div class="col-md-8">
                 <div class="form-group">
                     <label for="form_date">Pickup Date *</label>
-                    <input  type="date"   id="pickupdate" min="<?php echo date("Y-m-d"); ?>" name="pickupdate" class="form-control" required="required" onchange="dateChange()" >
+                    <input  type="date"   id="pickupdate" min="<?php echo date("Y-m-d"); ?>" name="pickupdate" class="form-control" max="<?php echo date("Y-m-d", time() + 604800);?>" required="required" onchange="dateChange()" >
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
@@ -336,9 +311,13 @@
 
 </form>
 <br>
-
+</div>
 <div class="row">
-            <div class="col-md-8">
+    <div class="col-md-12" >
+                        <h2 class="wow bounceIn " data-wow-offset="50" data-wow-delay="0.3s"> Track <span>Order</span></h2>
+                    </div>
+                     <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-md-8"> 
                 <div class="form-group">
                     <!-- <label for="form_address">Tracking Code</label> -->
                     <input  type="text" id="tcode" name="tcode" class="form-control"  placeholder="Please enter your Tracking Code*" required="required" data-error=" required.">
@@ -349,13 +328,13 @@
             <div class="col-md-4">
                 <Button id="order_btn" type="submit" onclick="viewStatus()" class="btn btn-success btn-send" >View</Button>
             </div>
-
+            </div>
             </div>
         
 
 
                     
-                </div>
+                
 
             </div>
             </div>
@@ -594,6 +573,38 @@ We ensure that we find a smile on your face with every service that we provide.<
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="color:black">Verify OTP Token</h4>
+        </div>
+        <div class="modal-body">
+          <p style="color:black">We have sent you an otp in your email address.Please enter otp code to verify your order.</p>
+          <form id="form1">
+          <div class="">
+            <input type="hidden" class="form-control" id="id" name="id" value="">
+             <input type="hidden" class="form-control" id="otpcodes" name="otpcodes" value="">
+              <input type="hidden" class="form-control" id="tcode" name="tcode" value="">
+              <input type="text" style="color:black" palceholder="otp" class="form-control" id="otp" name="otp">
+          </div>
+          <div class="form-control">
+              <button type="button" onclick="verifyotpcode()" class="btn-success" value="Submit">Submit</button>
+          </div>
+      </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
     	</section>
     	<!-- end contact -->
 
@@ -603,7 +614,7 @@ We ensure that we find a smile on your face with every service that we provide.<
                 <div class="row">
                     <div class="col-md-12 text-center">
                         
-                       <strong> Copyright &copy; 2021 <a href="#">Laundry Management System</a>. </strong> All rights
+                       <strong> Copyright &copy; <?php echo date('Y') ?> <a href="#">Mr. Spin Laundry</a>. </strong> All rights
     reserved.
                     </div>
                 </div>
@@ -615,20 +626,9 @@ We ensure that we find a smile on your face with every service that we provide.<
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="js/validator.js"></script>
 <script>
-    var baseurl = "<?php echo url('/'); ?>";
-    var config = {
-    apiKey: "AIzaSyCo4BLTyHmEkuYpsrHmX9jdjJZbl1dGrbU",
-    authDomain: "washmandu-85033.firebaseapp.com",
-    databaseURL: "https://washmandu-85033.firebaseio.com",
-    projectId: "washmandu-85033",
-    storageBucket: "washmandu-85033.appspot.com",
-    messagingSenderId: "106230856648"
-  };
-  firebase.initializeApp(config);
-
-
+     var baseurl = "<?php echo url('/'); ?>";
   function viewStatus(){
-   
+
     $('#exampleModalCenter').modal('show');
     var tcode=$("#tcode").val();
     $.ajax({
@@ -644,18 +644,24 @@ We ensure that we find a smile on your face with every service that we provide.<
                     htm += "<tr><td>Price per kg:</td><td> &nbsp;&nbsp;&nbsp;&nbsp;  "+response[0].price+"</td></tr>";
                     htm += "<tr><td>Total Amount:</td><td> &nbsp;&nbsp;&nbsp;&nbsp;  "+response[0].total+"</td></tr>";
                     if(response[0].status==0){
-                         htm += "<tr><td>Order Status:</td><td> &nbsp;&nbsp;&nbsp;&nbsp; Order Received</td></tr>";
+                         htm += "<tr><td>Order Status:</td><td> &nbsp;&nbsp;&nbsp;&nbsp; Order Received Please Wait for Confirmation. </td></tr>";
                     }
                     if(response[0].status==1){
-                         htm += "<tr><td>Order Status:</td><td> &nbsp;&nbsp;&nbsp;&nbsp; On the way for Pickup </td></tr>";
+                         htm += "<tr><td>Order Status:</td><td> &nbsp;&nbsp;&nbsp;&nbsp; Your Order is Confirmed. </td></tr>";
                     }
                     if(response[0].status==2){
-                         htm += "<tr><td>Order Status:</td><td> &nbsp;&nbsp;&nbsp;&nbsp; Your laundry is Received. </td></tr>";
+                         htm += "<tr><td>Order Status:</td><td> &nbsp;&nbsp;&nbsp;&nbsp; Your Order is Canceled. Please Reorder Again. </td></tr>";
                     }
                     if(response[0].status==3){
-                         htm += "<tr><td>Order Status:</td><td> &nbsp;&nbsp;&nbsp;&nbsp; Your laundry is being washed. </td></tr>";
+                         htm += "<tr><td>Order Status:</td><td> &nbsp;&nbsp;&nbsp;&nbsp; On the way for Pickup </td></tr>";
                     }
                     if(response[0].status==4){
+                         htm += "<tr><td>Order Status:</td><td> &nbsp;&nbsp;&nbsp;&nbsp; Your laundry is Received. </td></tr>";
+                    }
+                    if(response[0].status==5){
+                         htm += "<tr><td>Order Status:</td><td> &nbsp;&nbsp;&nbsp;&nbsp; Your laundry is being washed. </td></tr>";
+                    }
+                    if(response[0].status==6){
                          htm += "<tr><td>Order Status:</td><td> &nbsp;&nbsp;&nbsp;&nbsp; Your laundry has been sent to your Location. </td></tr>";
                     }
                     htm += "</table>";
@@ -671,25 +677,63 @@ We ensure that we find a smile on your face with every service that we provide.<
         });
   }
 
+  function verifyotpcode(){
+    var otp=$("#otp").val();
+    var otpcode=$("#otpcodes").val();
+    var tcode=$("#tcode").val();
+    var id=$("#id").val();
+   if(otp==otpcode){
+    var htm="<p style='color:#ffca28;font-weight:bold;font-size:21px'>Your order is placed successfully. Your tracking code : "+tcode+"</p>";
+    $('#myModal').modal('hide');
+    $("#sms").html(htm);
+   }else{
+     var htm="<p style='color:red;font-weight:bold;font-size:21px'>Unable to place order.Invalid Otp code</p>";
+     $.ajax({
+
+            method: 'get',
+            url: baseurl + "/booking/invalidotp?id=" + id,
+            success: function (response) {
+              
+                
+            },
+            fail: function () {
+                alert("failed");
+            }
+        });
+     $('#myModal').modal('hide');
+      $("#sms").html(htm);
+
+   }
+
+  }
+
   function formsubmit() {
 
-       
-
-            var url = baseurl + "/booking/creates";
-       
+     var url = baseurl + "/booking/creates";
+       var conf = confirm("Are you sure you want to place an order?");
+        if (conf) {
         $.ajax({
             method: "POST",
             url: url,
             data: $("#order_form").serialize(),
             success: function (resp) {
                 var a = JSON.parse(resp);
-                toast(a);
+                // toast(a);
                 if (a.status == 1) {
                     $("#id").val("");
                     $("#submit").text("Create");
                     resetForm($('#order_form'));
-                    var htm="<p style='color:white'>Your order is placed successfully. Your tracking code : "+a.tcode+"</p>";
-                    $("#sms").html(htm);
+                    if(a.otp==1){
+
+                   // var htm="<p style='color:#ffca28;font-weight:bold;font-size:21px'>Your order is placed successfully. Your tracking code : "+a.tcode+"</p>";
+                    $('#myModal').modal('show');
+                    $("#otpcodes").val(a.conf);
+                    $("#tcode").val(a.tcode);
+                    $("#id").val(a.id);
+                    
+                    }
+                    
+                    // $("#sms").html(htm);
                 }else{
                     var htm="<p style='color:red'>Unable to place order."+a.text+"</p>";
                      $("#sms").html(htm);
@@ -704,6 +748,7 @@ We ensure that we find a smile on your face with every service that we provide.<
                 alert("failed");
             }
         });
+    }
     }
     function resetForm(form) {
         $(form).trigger('reset');

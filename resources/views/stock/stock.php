@@ -53,13 +53,13 @@
                                     <input class="form-control" id="in_qty" placeholder="In quantity" type="text" name="in_qty" value="">
                                 </div>
                             </div> 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Price</label>
 
                                 <div class="col-sm-9">
                                     <input class="form-control" id="price" placeholder="price" type="text" name="price" value="">
                                 </div>
-                            </div>  
+                            </div>   -->
 
                             <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Used Quantity</label>
@@ -224,10 +224,18 @@ $(document).ready(function() {
 
 
     function formSubmit(e) {
-
+         e.preventDefault();
+        var ins =$("#in_qty").val();
+        var out=$("#used_qty").val();
+        
+        // alert(out);
+        if(ins-out<0){
+            alert("Used qunatity cannot be bigger than in quantity");
+            
+        }else{
         var id = $("#id").val();
         // alert(id);
-        e.preventDefault();
+       
         if ($('#id').val() == "") {
 
             var url = baseurl + "/stock/creates";
@@ -240,6 +248,7 @@ $(document).ready(function() {
             data: $("#form").serialize(),
             success: function (resp) {
                 var a = JSON.parse(resp);
+                console.log(a);
                 toast(a);
                 if (a.status == 1) {
                     $("#id").val("");
@@ -256,6 +265,7 @@ $(document).ready(function() {
                 alert("failed");
             }
         });
+    }
     }
     function resetForm(form) {
         $(form).trigger('reset');

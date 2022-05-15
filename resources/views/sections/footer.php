@@ -2,7 +2,7 @@
 <!--    <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.7
     </div>-->
-    <strong>Copyright &copy; 2021 <a href="#">Laundry Management System</a>.</strong> All rights
+    <strong>Copyright &copy; 20<?php echo date('y');?> <a href="#">Laundry Management System</a>.</strong> All rights
     reserved.
     
   </footer>

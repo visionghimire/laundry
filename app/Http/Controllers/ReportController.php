@@ -31,9 +31,9 @@ class ReportController extends Controller {
       if($fd!=null && $td!=null){
         $item=DB::table("inventory")->select('inventory.*','stock_list.name')
       ->join('stock_list','stock_list.id','=','inventory.supply_id')
-      ->whereBetween('inventory.date_created', [$fd, $td])
-      // ->where('inventory.date_created','>=',$fd)
-      // ->where('inventory.date_created','<=',$td)
+      // ->whereBetween('inventory.date_created', [$fd, $td])
+      ->where('inventory.date_created','>=',$fd)
+      ->orwhere('inventory.date_created','<=',$td)
       ->get();
       }else{
         $item=DB::table("inventory")->select('inventory.*','stock_list.name')

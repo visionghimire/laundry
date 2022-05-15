@@ -19,8 +19,8 @@ class LaundryTypeController extends Controller {
 
     public function index() {
 
-
-      return view('laundry_type.index');
+        $items=DB::table('laundry_categories')->get();
+      return view('laundry_type.index')->with('ltype',$items);
 
     }
 

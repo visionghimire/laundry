@@ -31,7 +31,18 @@
                           
                         </div>
                         <div class="box-body">
+                            <div class="form-group" style="display: none;">
+                                <label for="month" class="col-sm-3 control-label">Laundry Type</label>
 
+                                <div class="col-sm-9">
+                                      <select class="form-control" id="ltype" name="ltype">
+                                    <option value="">Select One</option>                              
+                                         <?php foreach ($ltype as $p):?>
+                                        <option value="<?php echo $p->id;?>"><?php echo $p->name;?></option>
+                                      <?php endforeach;?>
+                                      </select>
+                                </div>
+                            </div> 
                            
                             <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Name</label>
@@ -121,7 +132,7 @@ $(document).ready(function() {
 
      $(":input").inputmask();
 
- $("#ltype").addClass('active');
+ $("#ltypes").addClass('active');
 });
 
  
@@ -245,8 +256,10 @@ $(document).ready(function() {
             method: 'get',
             url: baseurl + "/laundry-type/edit/" + id,
             success: function (resp) {
+
                 assignValues(resp);
                 $('#id').val(resp.id);
+                $('#ltype').val(resp.ltype);
 
 
             },

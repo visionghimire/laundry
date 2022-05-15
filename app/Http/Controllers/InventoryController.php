@@ -35,8 +35,8 @@ class InventoryController extends Controller {
 
             return json_encode(['status' => 1, 'title' => "Success", 'text' => "Data Successfully Saved"]);
         } else {
-            return response()->json($model->errors, 500);
-            // return json_encode(['status'=>0,'title'=>"error",'text'=>"Error to save data"]);
+            // return response()->json($model->errors, 500);
+            return json_encode(['status'=>0,'title'=>"error",'text'=>$model->errors]);
         }
     }
 

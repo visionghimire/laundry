@@ -27,19 +27,22 @@ class StockController extends Controller {
      public function creates(Request $request) {
        $in=$request->input("in_qty");
        $used=$request->input("used_qty")||0;
+       $stid=$request->input("supply_id");
+       $pp=DB::table("stock_list")->where('id','=',$stid)->first();
        $rem=$in-$used;
         $model = new Stock();
         if ($model->validate($request->all())) {
             $req = $request->except(['_token']);
             $model->fill($req);
+            $model->price=$in*$pp->price;
             $model->remaining_qty=$rem;
             $model->save();
        
 
             return json_encode(['status' => 1, 'title' => "Success", 'text' => "Data Successfully Saved"]);
         } else {
-            return response()->json($model->errors, 500);
-            // return json_encode(['status'=>0,'title'=>"error",'text'=>"Error to save data"]);
+            // return response()->json($model->errors, 500);
+            return json_encode(['status'=>0,'title'=>"error",'text'=>$model->errors]);
         }
     }
 
@@ -76,12 +79,16 @@ class StockController extends Controller {
     public function updates(Request $request, $id) {
         $in=$request->input("in_qty");
        $used=$request->input("used_qty");
+       $stid=$request->input("supply_id");
+       $pp=DB::table("stock_list")->where('id','=',$stid)->first();
        // dd($used);
        $rem=$in-$used;
         $model = Stock::find($id);
         if ($model->validate($request->all())) {
             $model->fill($request->all());
             $model->remaining_qty=$rem;
+             $model->price=$in*$pp->price;
+            $model->date_created=date("y-m-d");
             $model->save();
 
             return json_encode(['status' => 1, 'title' => "Success", 'text' => "Data Successfully Updated"]);

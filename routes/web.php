@@ -13,6 +13,7 @@
 
 Route::get('/','BookingController@dashboard');
 
+
 Route::get('/login',function(){
     return view('login.index');
 });
@@ -37,12 +38,16 @@ Route::group(['prefix' =>'booking'], function () {
 
 Route::post('creates','BookingController@creates');
 Route::get('trackorder','BookingController@trackorder');
+Route::get('/sendemail','BookingController@sendemail');
+Route::get('/invalidotp','BookingController@invalid');
 
 });
 
 Route::group(['prefix' =>'booking','middleware' =>'checkSession'], function () {
 Route::get('/','BookingController@index');
 Route::get('list','BookingController@lists');
+Route::get('viewPayment/{id}','BookingController@viewPayment');
+// Route::get('invalidotp','BookingController@invalid');
 Route::get('edit/{id}','BookingController@edits');
 Route::post('updates/{id}','BookingController@updates');
 Route::get('deletes/{id}','BookingController@deletes');
@@ -103,5 +108,20 @@ Route::get('list','EmployeeController@lists');
 Route::get('edit/{id}','EmployeeController@edits');
 Route::post('updates/{id}','EmployeeController@updates');
 Route::get('deletes/{id}','EmployeeController@deletes');
+Route::get('report','EmployeeController@report');
+Route::get('report/getReport','EmployeeController@getreport');
 
 });
+
+Route::group(['prefix' =>'clock','middleware' =>'checkSession'], function () {
+Route::get('/','ClockController@index');
+Route::get('clockin/{id}','ClockController@clockin');
+Route::get('clockout/{id}','ClockController@clockout');
+Route::get('list','ClockController@lists');
+Route::get('checkin',"ClockController@checkin");
+Route::get('checkout',"ClockController@checkout");
+
+});
+
+
+

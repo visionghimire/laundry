@@ -26,7 +26,7 @@
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="box col-md-4">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Employee Check In / Check Out</h3>
+                            <h3 class="box-title">Employee Record</h3>
 
                           
                         </div>
@@ -56,20 +56,35 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">Username</label>
+
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="username"  type="text" name="username" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">Password</label>
+
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="password"  type="password" name="password" value="">
+                                </div>
+                            </div>
+
+                            <!-- <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Employee Clock In</label>
 
                                 <div class="col-sm-9">
                                     <input class="form-control" id="clock_in"  type="text" name="clock_in" value="">
                                 </div>
-                            </div>
-                            <div class="form-group">
+                            </div> -->
+                           <!--  <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Employee Clock Out</label>
 
                                 <div class="col-sm-9">
                                     <input class="form-control" id="clock_out"  type="text" name="clock_out" value="">
                                 </div>
-                            </div>
-                            <div class="form-group">
+                            </div> -->
+                            <!-- <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Availability</label>
 
                                 <div class="col-sm-9">
@@ -78,7 +93,7 @@
                                         <option value="0">N0</option>
                                     </select>
                                 </div>
-                            </div> 
+                            </div>  -->
                            
                                                
                             
@@ -124,9 +139,7 @@
                         <div id="showtable" class="box-body">
                             <table id="level-table" class="table table-striped table-bordered">
                                 <tr><th>ID</th><th>Name</th><th>Address</th><th>Contact Number</th>
-                                <th>Clock In</th>
-                            <th>Clock Out </th>
-                            <th>Availibily </th>
+                                <th>Username</th>
                             <th>Action</th>
                         </tr>
 
@@ -226,19 +239,11 @@ $(document).ready(function() {
             row.insertCell(1).innerHTML = data[i].name;
              row.insertCell(2).innerHTML = data[i].address;
               row.insertCell(3).innerHTML = data[i].contact_number;
-               row.insertCell(4).innerHTML = data[i].clock_in;
-                row.insertCell(5).innerHTML = data[i].clock_out;
-            if(data[i].availability==1){
-                 row.insertCell(6).innerHTML = "YES";
-            }else{
-                 row.insertCell(6).innerHTML = "NO";
-            }
-           
-           
-            
-           
+               row.insertCell(4).innerHTML = data[i].username;
+                
+                      
             // row.insertCell(2).innerHTML=resp[i].opening_date;
-            row.insertCell(7).innerHTML = "<a href='javascript:void(0)' onclick='edit(" + data[i].id + ")' class='btn btn-xs btn-primary' ><i class='glyphicon glyphicon-edit'></i>Edit</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='delt(" + data[i].id + ")' class='btn btn-xs btn-danger' ><i class='glyphicon glyphicon-trash'></i>Delete</a>";
+            row.insertCell(5).innerHTML = "<a href='javascript:void(0)' onclick='edit(" + data[i].id + ")' class='btn btn-xs btn-primary' ><i class='glyphicon glyphicon-edit'></i>Edit</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='delt(" + data[i].id + ")' class='btn btn-xs btn-danger' ><i class='glyphicon glyphicon-trash'></i>Delete</a>";
             rowCount++;
 
         }

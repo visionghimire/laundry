@@ -27,9 +27,13 @@ class EmployeeController extends Controller {
      public function creates(Request $request) {
        
         $model = new Employee();
+        $pass=$request->input("password");
+         
         if ($model->validate($request->all())) {
             $req = $request->except(['_token']);
             $model->fill($req);
+            $hpass=Hash::make($pass);
+           $model->password=$hpass;
             $model->save();
        
 
@@ -69,11 +73,12 @@ class EmployeeController extends Controller {
     }
 
     public function updates(Request $request, $id) {
-       
+        $pass=$request->input("password");
         $model = Employee::find($id);
         if ($model->validate($request->all())) {
             $model->fill($request->all());
-          
+          $hpass=Hash::make($pass);
+           $model->password=$hpass;
             $model->save();
 
             return json_encode(['status' => 1, 'title' => "Success", 'text' => "Data Successfully Updated"]);
@@ -91,4 +96,38 @@ class EmployeeController extends Controller {
             return json_encode(['status' => 0, 'title' => "error", 'text' => "Unable to Delete Parent row"]);
         }
     }
+
+    public function report(){
+    return view("employee.report");
+ }
+
+ public function getreport(Request $request){
+    $fd=$request->input("fd");
+      $td=$request->input("td");
+
+      if($fd!=null && $td!=null){
+         $item=DB::table("clock")->select('clock.*','employee.name','employee.address')
+         ->join('employee','employee.id','=','clock.emp_id')
+         ->where('clock.timestmp','LIKE',"$fd%") 
+          ->orwhere('clock.timestmp','LIKE',"$td%") 
+      // ->whereBetween('clock.timestmp', [$fd, $td]) 
+      ->get();
+      }else if($fd!=null && $td==null){
+         $item=$item=DB::table("clock")->select('clock.*','employee.name','employee.address')
+         ->join('employee','employee.id','=','clock.emp_id')
+      ->where('clock.timestmp','LIKE',"$fd%") 
+      ->get();
+      }
+      else{
+         $item=$item=DB::table("clock")->select('clock.*','employee.name','employee.address')
+         ->join('employee','employee.id','=','clock.emp_id')
+      // ->whereBetween('inventory.created_at', [$fd, $td]) 
+      ->get();
+      }
+
+      // dd($item);
+
+       return view('employee.reportlist')->with('item',$item);
+ }
+
 }
