@@ -40,6 +40,9 @@
                                     <b>ENTRIES</b>
                                 </form>
                             </div>
+                            <div id='loader1' style='display: none; text-align: center;'>
+                            <img src="<?php echo url("/");?>/images/loader.gif" width='32px' height='32px'> Please wait...
+                        </div>
                             <div style="float:right">
                                 <form id="srch" name="srch" onsubmit="searchClicked(event)" >
                                     <input  id="searchfill" placeholder="  search here" type="text" name="search">
@@ -47,13 +50,14 @@
                                 </form>
                             </div>
                         </div>
-
+                        
 
                         <div id="showtable" class="box-body">
                             <table id="level-table" class="table table-striped table-bordered">
                                 <tr><th> ID</th><th>Pick Up Date</th><th>Time Slot</th><th>Customer Name</th><th>Address</th><th>Phone</th><th>Tracking ID</th><th>Email</th><th>Unit in Kg</th><th>Price</th><th>Total</th><th>ACTIONS</th><th>Invoice</th></tr>
 
                             </table>
+                            
                         </div>
                         <div id="pagg">
 
@@ -110,7 +114,9 @@
                             <label for="presspasstype">Total Kg of clothes</label>
                            <input  type="text" id="unit" name="unit" class="form-control" placeholder="in kg*" required="required" data-error="unit is required.">
                         </div>
-                        
+                        <div id='loader' style='display: none;'>
+  <img src="<?php echo url("/");?>/images/loader.gif" width='32px' height='32px'>Please wait...
+</div>
                        
                        
                         <div class="col-md-6" style="width: 55%;margin-top: 14px;">
@@ -120,6 +126,7 @@
                     </form>
                 </div>
             </div>
+            
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal();">Close</button>
             </div>
@@ -127,7 +134,7 @@
     </div>
 </div>
 <!-- /.content-wrapper -->
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
 <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
  
@@ -280,6 +287,11 @@ $(document).ready(function() {
             method: "POST",
             url: url,
             data: $("#form").serialize(),
+            beforeSend: function(){
+    // Show image container
+    $("#loader").show();
+   },
+    
             success: function (resp) {
                 var a = JSON.parse(resp);
                 jQuery.noConflict();
@@ -296,6 +308,12 @@ $(document).ready(function() {
 
 
             },
+   complete:function(data){
+    // Hide image container
+    $("#loader").hide();
+   },
+
+
             fail: function () {
 
                 alert("failed");
@@ -307,14 +325,22 @@ $(document).ready(function() {
        $.ajax({
                 method: 'get',
                 url: baseurl + "/booking/changeStatus?status=" + sid +"&id="+id,
-                success: function (resp) {
+                beforeSend: function(){
+    // Show image container
+    $("#loader1").show();
+   },
+   success: function (resp) {
                     var a = JSON.parse(resp);
                      // jQuery.noConflict();
                     toast(a);
                     table();
 
                 },
-
+   complete:function(data){
+    // Hide image container
+    $("#loader1").hide();
+   },
+                
                 fail: function () {
                     alert("Fail");
 

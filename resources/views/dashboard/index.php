@@ -257,17 +257,7 @@
              <div class="form-group">
                     <label for="form_timeslot">Time Slot* </label><br/>
                                  <select class="form-control form-control-lg" id="timeslot" name="timeslot" required="required" >
-                             <!--  <option value="9AM-12PM">8AM-9AM</option>
-                              <option value="12PM-3PM">9AM-10AM</option>
-                              <option value="3PM-6PM">10AM-11AM</option>
-                              <option value="3PM-6PM">11AM-12PM</option>
-                              <option value="3PM-6PM">12PM-1PM</option>
-                              <option value="3PM-6PM">1PM-2PM</option>
-                              <option value="3PM-6PM">2PM-3PM</option>
-                              <option value="3PM-6PM">3PM-4PM</option>
-                              <option value="3PM-6PM">4PM-5PM</option>
-                              <option value="3PM-6PM">5PM-6PM</option>
-                              <option value="3PM-6PM">6PM-7PM</option> -->
+                             
                               <?php foreach ($slot as $p):?>
                                 <?php 
                                 if($p->status==0){ ?>
@@ -303,6 +293,9 @@
                 <Button id="order_btn" type="submit" class="btn btn-success btn-send" >Place Order</Button>
             </div>
         </div>
+        <div id='loader' style='display: none; text-align: center;'>
+                            <img src="<?php echo url("/");?>/images/loader.gif" width='32px' height='32px'> Please wait...
+                        </div>
         <div id="sms">
             
         </div>
@@ -581,7 +574,7 @@ We ensure that we find a smile on your face with every service that we provide.<
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!--   <button type="button" class="close" data-dismiss="modal">&times;</button> -->
           <h4 class="modal-title" style="color:black">Verify OTP Token</h4>
         </div>
         <div class="modal-body">
@@ -591,16 +584,16 @@ We ensure that we find a smile on your face with every service that we provide.<
             <input type="hidden" class="form-control" id="id" name="id" value="">
              <input type="hidden" class="form-control" id="otpcodes" name="otpcodes" value="">
               <input type="hidden" class="form-control" id="tcode" name="tcode" value="">
-              <input type="text" style="color:black" palceholder="otp" class="form-control" id="otp" name="otp">
+              <input type="text" style="color:black" palceholder="otp" class="form-control" id="otp" name="otp" required>
           </div>
-          <div class="form-control">
+          <div>
               <button type="button" onclick="verifyotpcode()" class="btn-success" value="Submit">Submit</button>
           </div>
       </form>
         </div>
-        <div class="modal-footer">
+        <!-- <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+        </div> -->
       </div>
       
     </div>
@@ -716,7 +709,11 @@ We ensure that we find a smile on your face with every service that we provide.<
             method: "POST",
             url: url,
             data: $("#order_form").serialize(),
-            success: function (resp) {
+            beforeSend: function(){
+    // Show image container
+    $("#loader").show();
+   },
+   success: function (resp) {
                 var a = JSON.parse(resp);
                 // toast(a);
                 if (a.status == 1) {
@@ -743,6 +740,11 @@ We ensure that we find a smile on your face with every service that we provide.<
 
 
             },
+   complete:function(data){
+    // Hide image container
+    $("#loader").hide();
+   },
+            
             fail: function () {
 
                 alert("failed");

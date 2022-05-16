@@ -12,8 +12,13 @@
 <body>
 
 <div class="container">
-  <h2>Stock Report</h2>           
-  <table class="table table-striped">
+  <div style="text-align:center;">
+  <img src="<?php echo url("/");?>/images/mrspin.png" height="150" width="250" alt="Company Name">
+  </div>
+  <h2> Stock Report</h2>  
+  <h4 style="text-align:right"> Receipt Created on 20<?php echo date('y-m-d');  ?> </h4>
+         
+  <table class="table table-striped" style="margin-top:50px">
     <thead>
       <tr>
         <th>Inventory Name</th>

@@ -89,6 +89,16 @@ class BookingController extends Controller
      
    }
 
+   public function status_edit($msg,$id,$email,$fullname,$unit,$price) {
+    
+      Mail::send('email.edit',['msg'=>$msg,'name'=>$fullname,'unit'=>$unit,'price'=>$price],function($m) use ($email){
+      $m->to($email);
+      $m->subject('Laundry Status');
+      });
+     return true;
+     
+   }
+
    public function status_email_att($msg,$id,$email,$fullname,$tcode) {
 
     $customer=DB::table('booking')
@@ -127,20 +137,23 @@ class BookingController extends Controller
       $td=$request->input("td");
 
       if($fd!=null && $td!=null){
-         $item=DB::table("booking")
+         $item=DB::table("booking")->select('booking.*','time_slot.slot')
+            ->join('time_slot','time_slot.id','=','booking.timeslot')->where('booking.status','=',6)
       ->whereBetween('booking.created_at', [$fd, $td]) 
       ->get();
       }else if($fd!=null && $td==null){
-         $item=DB::table("booking")
+         $item=DB::table("booking")->select('booking.*','time_slot.slot')
+            ->join('time_slot','time_slot.id','=','booking.timeslot')->where('booking.status','=',6)
       ->where('booking.created_at','LIKE',"$fd%") 
       ->get();
       }
       else{
-         $item=DB::table("booking")
+         $item=DB::table("booking")->select('booking.*','time_slot.slot')
+            ->join('time_slot','time_slot.id','=','booking.timeslot')->where('booking.status','=',6)
       // ->whereBetween('inventory.created_at', [$fd, $td]) 
       ->get();
       }
-
+    
        return view('booking.reportlist')->with('item',$item);
  }
 
@@ -164,6 +177,8 @@ class BookingController extends Controller
        $model->type=$type;
        $s=$model->save();
        if($s){
+        $msg="Your laundry status has been updated. ";
+        $this->status_edit($msg,$model->id,$model->email,$model->fullname,$unit,$model->total);
          return json_encode(['status' => 1, 'title' => "Success", 'text' => "Data Successfully Updated"]);
        }else{
         return json_encode(['status' => 0, 'title' => "error", 'text' => "Error to update data"]);

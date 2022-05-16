@@ -12,8 +12,12 @@
 <body>
 
 <div class="container">
-  <h2>Booking Report</h2>           
-  <table class="table table-striped">
+  <div style="text-align:center;">
+  <img src="<?php echo url("/");?>/images/mrspin.png" height="150" width="250" alt="Company Name">
+  </div>
+  <h2>Booking Report</h2>    
+  <h4 style="text-align:right"> Receipt Created on 20<?php echo date('y-m-d');  ?> </h4>              
+  <table class="table table-striped" style="margin-top:30px">
     <thead>
       <tr>
         <th>Pick Up Date</th><th>Time Slot</th><th>Customer Name</th><th>Address</th><th>Phone</th><th>Tracking ID</th><th>Email</th><th>Unit in Kg</th><th>Price</th><th>Total</th>
@@ -24,7 +28,7 @@
     	<?php foreach($item as $a){ ?>
       <tr>
         <td><?php echo $a->pickupdate;?></td>
-        <td><?php echo $a->timeslot;?></td>
+        <td><?php echo $a->slot;?></td>
        
         <td><?php echo $a->fullname;?></td>
         <td><?php echo $a->address;?></td>

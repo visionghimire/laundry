@@ -112,7 +112,7 @@
 
                         <div id="showtable" class="box-body">
                             <table id="level-table" class="table table-striped table-bordered">
-                                <tr><th>ID</th><th> Name</th><th>In Quantity</th><th>Price</th><th>Used Quantity</th><th>ACTIONS</th></tr>
+                                <tr><th> Name</th><th>In Quantity</th><th>Price</th><th>Used Quantity</th><th>ACTIONS</th></tr>
 
                             </table>
                         </div>
@@ -206,15 +206,15 @@ $(document).ready(function() {
         for (var i in data) {
             var row = t.insertRow(rowCount);
 
-            row.insertCell(0).innerHTML = data[i].id;
-            row.insertCell(1).innerHTML = data[i].name;
-            row.insertCell(2).innerHTML = data[i].in_qty;
-             row.insertCell(3).innerHTML = data[i].price;
-              row.insertCell(4).innerHTML = data[i].used_qty;
+            
+            row.insertCell(0).innerHTML = data[i].name;
+            row.insertCell(1).innerHTML = data[i].in_qty;
+             row.insertCell(2).innerHTML = data[i].price;
+              row.insertCell(3).innerHTML = data[i].used_qty;
             
            
             // row.insertCell(2).innerHTML=resp[i].opening_date;
-            row.insertCell(5).innerHTML = "<a href='javascript:void(0)' onclick='edit(" + data[i].id + ")' class='btn btn-xs btn-primary' ><i class='glyphicon glyphicon-edit'></i>Edit</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='delt(" + data[i].id + ")' class='btn btn-xs btn-danger' ><i class='glyphicon glyphicon-trash'></i>Delete</a>";
+            row.insertCell(4).innerHTML = "<a href='javascript:void(0)' onclick='edit(" + data[i].id + ")' class='btn btn-xs btn-primary' ><i class='glyphicon glyphicon-edit'></i>Edit</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='delt(" + data[i].id + ")' class='btn btn-xs btn-danger' ><i class='glyphicon glyphicon-trash'></i>Delete</a>";
             rowCount++;
 
         }

@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Add Inventory
+            Add Stock Item
         </h1>
     </section>
 
@@ -26,7 +26,7 @@
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="box col-md-4">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Create Inventory</h3>
+                            <h3 class="box-title">Create Stock Item</h3>
 
                           
                         </div>
@@ -60,7 +60,7 @@
             <div class="col-md-6">
                 <div class="box col-md-4">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Inventory List</h3>
+                        <h3 class="box-title">Stock Item List</h3>
 
                       
                     </div>

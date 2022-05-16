@@ -86,7 +86,12 @@ class ClockController extends Controller {
        
          $items=DB::table("clock")->where("emp_id","=",$id)->where("type","=","in")->latest("timestmp")->first();
          if($items){
-            return $items->timestmp;
+            if(date('Ymd') == date('Ymd', strtotime($items->timestmp))){
+                 return $items->timestmp;
+            }else{
+                return "";
+            }
+           
          }else{
             return "";
          }
@@ -97,7 +102,11 @@ class ClockController extends Controller {
        
          $items=DB::table("clock")->where("emp_id","=",$id)->where("type","=","out")->latest("timestmp")->first();
          if($items){
-            return $items->timestmp;
+             if(date('Ymd') == date('Ymd', strtotime($items->timestmp))){
+                 return $items->timestmp;
+            }else{
+                return "";
+            }
          }else{
             return "";
          }

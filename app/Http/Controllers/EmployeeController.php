@@ -121,7 +121,6 @@ class EmployeeController extends Controller {
       else{
          $item=$item=DB::table("clock")->select('clock.*','employee.name','employee.address')
          ->join('employee','employee.id','=','clock.emp_id')
-      // ->whereBetween('inventory.created_at', [$fd, $td]) 
       ->get();
       }
 

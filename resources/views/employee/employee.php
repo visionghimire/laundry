@@ -55,20 +55,6 @@
                                     <input class="form-control" id="contact_number"  type="text" name="contact_number" value="">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="name" class="col-sm-3 control-label">Username</label>
-
-                                <div class="col-sm-9">
-                                    <input class="form-control" id="username"  type="text" name="username" value="">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="name" class="col-sm-3 control-label">Password</label>
-
-                                <div class="col-sm-9">
-                                    <input class="form-control" id="password"  type="password" name="password" value="">
-                                </div>
-                            </div>
 
                             <!-- <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Employee Clock In</label>
@@ -139,7 +125,7 @@
                         <div id="showtable" class="box-body">
                             <table id="level-table" class="table table-striped table-bordered">
                                 <tr><th>ID</th><th>Name</th><th>Address</th><th>Contact Number</th>
-                                <th>Username</th>
+                                
                             <th>Action</th>
                         </tr>
 
@@ -239,11 +225,11 @@ $(document).ready(function() {
             row.insertCell(1).innerHTML = data[i].name;
              row.insertCell(2).innerHTML = data[i].address;
               row.insertCell(3).innerHTML = data[i].contact_number;
-               row.insertCell(4).innerHTML = data[i].username;
+               
                 
                       
             // row.insertCell(2).innerHTML=resp[i].opening_date;
-            row.insertCell(5).innerHTML = "<a href='javascript:void(0)' onclick='edit(" + data[i].id + ")' class='btn btn-xs btn-primary' ><i class='glyphicon glyphicon-edit'></i>Edit</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='delt(" + data[i].id + ")' class='btn btn-xs btn-danger' ><i class='glyphicon glyphicon-trash'></i>Delete</a>";
+            row.insertCell(4).innerHTML = "<a href='javascript:void(0)' onclick='edit(" + data[i].id + ")' class='btn btn-xs btn-primary' ><i class='glyphicon glyphicon-edit'></i>Edit</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='delt(" + data[i].id + ")' class='btn btn-xs btn-danger' ><i class='glyphicon glyphicon-trash'></i>Delete</a>";
             rowCount++;
 
         }
