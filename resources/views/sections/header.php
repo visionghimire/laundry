@@ -136,9 +136,6 @@ if (Session::has('msg')):
                                     </li>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
-                                        <div class="" >
-                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                        </div>
                                         <div class="" style="margin-top:5px;">
                                             <a href="<?php echo url('/logout'); ?>" class="btn btn-default btn-flat">Sign out</a>
                                         </div>

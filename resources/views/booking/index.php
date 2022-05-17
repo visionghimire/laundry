@@ -144,7 +144,7 @@
 $(document).ready(function() {
 
      $(":input").inputmask();
- 
+
  $("#booking").addClass('active');
 });
 
