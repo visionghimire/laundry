@@ -3,6 +3,7 @@
               <!-- title row -->
               <div class="row">
                 <div class="col-12">
+                  <img src="<?php echo url("/");?>/images/mrspin.png" height="150" width="250" alt="Company Name">
                   <h4>
                     <i class="fas fa-globe"></i> Mr. Spin Laundry Shop
                     <small class="float-right">Date: <?php echo $customer->pickupdate;?></small>
@@ -20,7 +21,7 @@
                     1013 Metro Manila, <br>
                     Philippines
                     Phone: 09664781026<br>
-                    Email: mrspin.laundry@gmail.com
+                    Email: mrspinlaundry@gmail.com
                   </address>
                 </div>
                 <!-- /.col -->
@@ -95,6 +96,7 @@
                       </tr>
                     </table>
                   </div>
+                  <p style="text-align:right"> Approved By: Mr Spin Laundry</p>
                 </div>
                 <!-- /.col -->
               </div>
