@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2022 at 07:16 AM
+-- Generation Time: May 17, 2022 at 10:24 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -107,7 +107,9 @@ INSERT INTO `booking` (`id`, `type`, `service_type`, `unit`, `price`, `total`, `
 (54, 3, 'Wash and Fold', 8, 30, 240, '165270271452', 'sadsadad', 'vision.ghimere96@gmail.com', 'dsadsaasd', '2022-05-17', '1', 'sdasdad', 'sadasdasd', 6, '2022-05-16 17:50:14'),
 (55, 1, 'Wash and Fold', 11, 50, 550, '165270299753', 'dsadasd', 'vision.ghimere96@gmail.com', '9874563212', '2022-05-17', '3', 'sdada', 'dsadasd', 6, '2022-05-16 17:54:57'),
 (56, 1, 'Wash and Fold', 11, 50, 550, '165270340954', 'visionghemere', 'vision.ghimere96@gmail.com', '9874563212', '2022-05-18', '1', 'dsada', 'dsada', 9, '2022-05-16 18:01:49'),
-(57, 1, 'Wash and Fold', 11, 50, 550, '165270347555', 'visionghemere', 'vision.ghimere96@gmail.com', '9874563212', '2022-05-17', '1', 'sdasdad', 'dsada', 9, '2022-05-16 18:02:55');
+(57, 1, 'Wash and Fold', 11, 50, 550, '165270347555', 'visionghemere', 'vision.ghimere96@gmail.com', '9874563212', '2022-05-17', '1', 'sdasdad', 'dsada', 9, '2022-05-16 18:02:55'),
+(58, 3, 'Wash and Fold', 10, 30, 300, '165277503656', 'Lauro', 'vision.ghimere96@gmail.com', '9874563212', '2022-05-18', '2', 'sdad', 'sadasd', 2, '2022-05-17 13:55:36'),
+(59, 3, 'Wash and Fold', 10, 30, 300, '165277512557', 'laulo', 'vision.ghimere96@gmail.com', '9874563215', '2022-05-17', '4', 'sadsda', 'dsaddsa', 6, '2022-05-17 13:57:05');
 
 -- --------------------------------------------------------
 
@@ -476,7 +478,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `clock`
