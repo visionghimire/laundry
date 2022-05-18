@@ -50,7 +50,7 @@
                                 <label for="name" class="col-sm-3 control-label">In Quantity</label>
 
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="in_qty" placeholder="In quantity" type="text" name="in_qty" value="">
+                                    <input class="form-control" id="in_qty" placeholder="In quantity" type="number" name="in_qty" value="">
                                 </div>
                             </div> 
                             <!-- <div class="form-group">
@@ -65,7 +65,7 @@
                                 <label for="name" class="col-sm-3 control-label">Used Quantity</label>
 
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="used_qty" placeholder="used quantity" type="text" name="used_qty" value="">
+                                    <input class="form-control" id="used_qty" placeholder="used quantity" type="number" name="used_qty" value="">
                                 </div>
                             </div>   
 

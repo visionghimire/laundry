@@ -26,9 +26,11 @@ class StockController extends Controller {
 
      public function creates(Request $request) {
        $in=$request->input("in_qty");
+
        $used=$request->input("used_qty")||0;
        $stid=$request->input("supply_id");
        $pp=DB::table("stock_list")->where('id','=',$stid)->first();
+       
        $rem=$in-$used;
         $model = new Stock();
         if ($model->validate($request->all())) {
@@ -42,7 +44,7 @@ class StockController extends Controller {
             return json_encode(['status' => 1, 'title' => "Success", 'text' => "Data Successfully Saved"]);
         } else {
             // return response()->json($model->errors, 500);
-            return json_encode(['status'=>0,'title'=>"error",'text'=>$model->errors]);
+            return json_encode(['status'=>0,'title'=>"error",'text'=>"Please enter quantity in numeric"]);
         }
     }
 

@@ -11,7 +11,7 @@ class Booking extends BaseModel
     protected $rules = [
         'type'=>'integer|required',
         'service_type' => 'string|required',
-        'unit'=>'string|required',
+        'unit'=>'integer|required',
         'fullname' => 'string|required',
         'email'=>'string|required',
         'phone' => 'string|required',

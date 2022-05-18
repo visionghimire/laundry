@@ -294,7 +294,7 @@ $(document).ready(function() {
     
             success: function (resp) {
                 var a = JSON.parse(resp);
-                jQuery.noConflict();
+                // jQuery.noConflict();
                 // toast(a);
                 if (a.status == 1) {
                     $("#id").val("");
@@ -331,8 +331,9 @@ $(document).ready(function() {
    },
    success: function (resp) {
                     var a = JSON.parse(resp);
-                     // jQuery.noConflict();
-                    toast(a);
+                     jQuery.noConflict();
+                    // toast(a);
+                    alert("Operation Successfull");
                     table();
 
                 },

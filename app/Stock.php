@@ -10,8 +10,8 @@ class Stock extends BaseModel
     protected $fillable = ['supply_id','in_qty','used_qty'];
     protected $rules = [
         'supply_id'=>'integer|required',
-        'in_qty' => 'integer|required',
-        'used_qty' => 'integer|nullable',
+        'in_qty' => 'numeric|required',
+        'used_qty' => 'numeric|nullable',
 
         ];
 }

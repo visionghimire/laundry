@@ -10,7 +10,7 @@ class Inventory extends BaseModel
     protected $fillable = ['name','price'];
     protected $rules = [
         'name'=>'string|required',
-        'price' => 'string|required',
+        'price' => 'numeric|required',
         
 
         ];

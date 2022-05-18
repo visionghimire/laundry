@@ -207,8 +207,8 @@ class BookingController extends Controller
             }
             
         } else {
-            return response()->json($model->errors, 500);
-            // return json_encode(['status'=>0,'title'=>"error",'text'=>"Error to save data"]);
+            // return response()->json($model->errors, 500);
+            return json_encode(['status'=>0,'title'=>"error",'text'=>"Please enter correct information"]);
         }
     }
     public function lists(Request $request) {
@@ -242,6 +242,7 @@ class BookingController extends Controller
     }
 
     public function changeStatus(Request $request){
+        ini_set('max_execution_time', '300'); 
         $status=$request->input('status');
         $id=$request->input('id');
         $model=Booking::find($id);

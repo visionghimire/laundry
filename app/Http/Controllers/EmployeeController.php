@@ -32,15 +32,13 @@ class EmployeeController extends Controller {
         if ($model->validate($request->all())) {
             $req = $request->except(['_token']);
             $model->fill($req);
-            $hpass=Hash::make($pass);
-           $model->password=$hpass;
             $model->save();
        
 
             return json_encode(['status' => 1, 'title' => "Success", 'text' => "Data Successfully Saved"]);
         } else {
             return response()->json($model->errors, 500);
-            // return json_encode(['status'=>0,'title'=>"error",'text'=>"Error to save data"]);
+            return json_encode(['status'=>0,'title'=>"error",'text'=>"Error to save data"]);
         }
     }
 

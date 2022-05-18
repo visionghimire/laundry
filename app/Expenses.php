@@ -12,7 +12,7 @@ class Expenses extends BaseModel
         'years'=>'integer|required',
         'months' => 'integer|required',
         'type' => 'string|required',
-        'price' => 'integer|required',
+        'price' => 'numeric|required',
         
 
         ];

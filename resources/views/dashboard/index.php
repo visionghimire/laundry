@@ -510,7 +510,7 @@ We ensure that we find a smile on your face with every service that we provide.<
     				</div>
 
     				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
-                            <form  id="contact_form" onsubmit="sendMessage(); return false;" role="form">
+                            <form  action="mailto:mrspinlaundry@gmail.com" id="contact_form" method="post">
     						<label>NAME</label>
     						<input name="fullname" type="text" class="form-control" id="contact_fullname" placeholder="Please enter your full name *" required="required" data-error="Name is required.">
    						  	
@@ -732,7 +732,7 @@ We ensure that we find a smile on your face with every service that we provide.<
                     
                     // $("#sms").html(htm);
                 }else{
-                    var htm="<p style='color:red'>Unable to place order."+a.text+"</p>";
+                    var htm="<p style='color:red;font-weight:bold;font-size:21px'>Unable to place order."+a.text+"</p>";
                      $("#sms").html(htm);
                 }
                 // table();
@@ -765,6 +765,12 @@ We ensure that we find a smile on your face with every service that we provide.<
                 });
             });
 
+    function resetForm(form) {
+        $(form).trigger('reset');
+        if ($('#id').length) {
+            $('#id').val('');
+        }
+    }
 
 </script>
 	</body>
