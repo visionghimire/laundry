@@ -15,7 +15,8 @@
        <li id="booking"><a href="<?php echo url('/booking');?>"><i class="fa fa-plus"></i>Booking</a></li>
         <li id="ltypes"><a href="<?php echo url('/laundry-type');?>"><i class="fa fa-plus"></i>Laundry type</a></li>
         <li id="inventory"><a href="<?php echo url('/inventory');?>"><i class="fa fa-plus"></i>Stock Item</a></li>
-        <li id="stock"><a href="<?php echo url('/stock');?>"><i class="fa fa-plus"></i>Inventory</a></li>
+        <li id="stock"><a href="<?php echo url('/stock');?>"><i class="fa fa-plus"></i>Stock Purchase</a></li>
+        <li id="stockinv"><a href="<?php echo url('/stockinventory');?>"><i class="fa fa-plus"></i>Inventory</a></li>
         <li id="employee"><a href="<?php echo url('/employee');?>"><i class="fa fa-plus"></i>Employee Records</a></li>
         <li id="clock"><a href="<?php echo url('/clock');?>"><i class="fa fa-plus"></i>Employee Time In/Out </a></li>
         <li id="exp"><a href="<?php echo url('/expenses');?>"><i class="fa fa-plus"></i>Expenses</a></li>

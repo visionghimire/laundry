@@ -47,6 +47,19 @@
                                 <div class="col-sm-9">
                                     <input class="form-control" id="to_date" placeholder="" type="date" name="to_date" value="">
                                 </div>
+                            </div>  <br> <br>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">Stock Name</label>
+
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="stockid" name="stockid">
+                                        <option value="all"> All Stocks </option>
+                                        <?php foreach ($stock as $p):?>
+                                        <option value="<?php echo $p->id;?>"><?php echo $p->name;?></option>
+                                      <?php endforeach;?>
+                                    </select>
+                                </div>
                             </div>  
 
                              
@@ -83,7 +96,8 @@ $(document).ready(function() {
  function getReport(){
     var fd=$("#from_date").val();
     var td=$("#to_date").val();
-    window.open(baseurl+"/stock-report/getReport?fd="+fd+"&td="+td, '_blank').focus();
+    var stock =$("#stockid").val();
+    window.open(baseurl+"/stock-report/getReport?fd="+fd+"&td="+td+"&stock="+stock, '_blank').focus();
    
  }
 

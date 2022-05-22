@@ -69,6 +69,7 @@ class ClockController extends Controller {
            foreach($items as $v){
             $v->in=$this->checkin($v->id);
              $v->out=$this->checkout($v->id);
+             $v->hour=$this->getHour($v->id);
            }
             return $items;
             // $table=$this->getData($modeltries);
@@ -78,8 +79,47 @@ class ClockController extends Controller {
                     ->where('id', 'LIKE', "%$search%")
                     ->orwhere('name', 'LIKE', "%$search%")
                     ->paginate($entry, ['*'], 'page', $page);
+                    foreach($items as $v){
+            $v->in=$this->checkin($v->id);
+             $v->out=$this->checkout($v->id);
+             $v->hour=$this->getHour($v->id);
+           }
             return $items;
+            // return $items;
         }
+    }
+
+    public function getHour($id){
+        $in=DB::table("clock")->where("emp_id","=",$id)->where("type","=","in")->latest("timestmp")->first();
+         $out=DB::table("clock")->where("emp_id","=",$id)->where("type","=","out")->latest("timestmp")->first();
+         if($in){
+            if($out){
+              $ins=$in->timestmp;
+         $outs=$out->timestmp;
+         if(date('Ymd', strtotime($in->timestmp))==date('Ymd', strtotime($out->timestmp)) && date('Ymd') == date('Ymd', strtotime($in->timestmp))){
+            $t1 = strtotime($ins);
+            $t2 = strtotime($outs);
+            $diff = $t2 - $t1;
+           // dd($diff);
+            if($diff>3600){
+                 $hours = round($diff / ( 60 * 60 ))." Hours";
+            }else{
+                 $hours = round(($diff / 60))." Minute";
+            }
+           
+            return $hours;  
+        }else{
+            return " ";
+        }
+        }else{
+            return " ";
+        }
+    }else{
+        return " ";
+    }
+         
+
+         
     }
 
     public function checkin($id){

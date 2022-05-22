@@ -54,6 +54,7 @@
                                 <tr><th>ID</th><th>Name</th><th>Address</th><th>Contact Number</th>
                                     <th>Last Check in</th>
                                     <th>Last Check out</th>
+                                    <th>Hour</th>
                                
                             <th>Action</th>
                         </tr>
@@ -156,8 +157,9 @@ $(document).ready(function() {
               row.insertCell(3).innerHTML = data[i].contact_number;
               row.insertCell(4).innerHTML = data[i].in;
               row.insertCell(5).innerHTML = data[i].out;
+               row.insertCell(6).innerHTML = data[i].hour;
               
-            row.insertCell(6).innerHTML = "<a href='javascript:void(0)' onclick='clockin(" + data[i].id + ")' class='btn btn-xs btn-primary' ><i class='glyphicon glyphicon-log-in'></i> &nbsp; Time In </a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='clockout(" + data[i].id + ")' class='btn btn-xs btn-danger' ><i class='glyphicon glyphicon-log-out'></i> &nbsp; Time Out</a>";
+            row.insertCell(7).innerHTML = "<a href='javascript:void(0)' onclick='clockin(" + data[i].id + ")' class='btn btn-xs btn-primary' ><i class='glyphicon glyphicon-log-in'></i> &nbsp; Time In </a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='clockout(" + data[i].id + ")' class='btn btn-xs btn-danger' ><i class='glyphicon glyphicon-log-out'></i> &nbsp; Time Out</a>";
             rowCount++;
 
         }

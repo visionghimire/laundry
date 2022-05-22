@@ -19,29 +19,53 @@ class ReportController extends Controller {
 
     public function index() {
        
-
-      return view('stock.report');
+      $stock = DB::table("stock_list")->get();
+      return view('stock.report')->with("stock", $stock);
 
     }
 
     public function getReport(Request $request){
       $fd=$request->input("fd");
       $td=$request->input("td");
+      $stock=$request->input("stock");
+
       // dd($td);
       if($fd!=null && $td!=null){
-        $item=DB::table("inventory")->select('inventory.*','stock_list.name')
+        if($stock=="all"){
+          $item=DB::table("inventory")->select('inventory.*','stock_list.name')
       ->join('stock_list','stock_list.id','=','inventory.supply_id')
       // ->whereBetween('inventory.date_created', [$fd, $td])
       ->where('inventory.date_created','>=',$fd)
       ->orwhere('inventory.date_created','<=',$td)
       ->get();
+        }else{
+          $item=DB::table("inventory")->select('inventory.*','stock_list.name')
+      ->join('stock_list','stock_list.id','=','inventory.supply_id')
+      ->where("inventory.supply_id","=",$stock)
+      // ->whereBetween('inventory.date_created', [$fd, $td])
+      ->where('inventory.date_created','>=',$fd)
+      ->orwhere('inventory.date_created','<=',$td)
+      ->get();
+        }
+        
       }else{
-        $item=DB::table("inventory")->select('inventory.*','stock_list.name')
+        if($stock=="all"){
+          $item=DB::table("inventory")->select('inventory.*','stock_list.name')
       ->join('stock_list','stock_list.id','=','inventory.supply_id')
       // ->where('inventory.date_created','>=',$fd)
       // ->where('inventory.date_created','<=',$td)
       ->get();
 
+        }else{
+          $item=DB::table("inventory")->select('inventory.*','stock_list.name')
+      ->join('stock_list','stock_list.id','=','inventory.supply_id')
+      ->where("inventory.supply_id","=",$stock)
+      // ->where('inventory.date_created','>=',$fd)
+      // ->where('inventory.date_created','<=',$td)
+      ->get();
+
+        }
+        
       }
 
       return view('stock.reportlist')->with('item',$item);

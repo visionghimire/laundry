@@ -1,4 +1,4 @@
-<?php include(resource_path().'/views/sections/header.php');?>
+ <?php include(resource_path().'/views/sections/header.php');?>
 <?php include(resource_path().'/views/sections/leftmenu.php');?>
 <div  id="body" class="content-wrapper">
 <?php
@@ -65,7 +65,7 @@ $mnt=$mnths->month;
 
             <div class="info-box-content" id="survey">
               <span class="info-box-text">Total Expenses</span>
-              <span class="info-box-number" > <?php echo $exp;?></span>
+              <span class="info-box-number" > Peso <?php echo $exp;?></span>
               
 
             </div>
@@ -80,7 +80,7 @@ $mnt=$mnths->month;
 
             <div class="info-box-content" id="survey">
               <span class="info-box-text">Total Stock Expenses</span>
-              <span class="info-box-number" > <?php echo $ex;?></span>
+              <span class="info-box-number" > Peso <?php echo $ex;?></span>
               
 
             </div>
@@ -97,7 +97,7 @@ $mnt=$mnths->month;
             <div class="info-box-content" id="survey">
               <span class="info-box-text">Total Income</span>
               
-              <span class="info-box-number" > <?php echo $income;?></span>
+              <span class="info-box-number" >Peso <?php echo $income;?></span>
               
 
             </div>
@@ -116,7 +116,7 @@ $mnt=$mnths->month;
             <div class="info-box-content" id="survey">
               <span class="info-box-text">Total Profit/Loss</span>
               <span class="info-box-text"><?php echo $income."-".$exp."-".$ex;?>=</span>
-              <span class="info-box-number" > <?php echo $income-$exp-$ex;?></span>
+              <span class="info-box-number" >Peso <?php echo $income-$exp-$ex;?></span>
               
 
             </div>

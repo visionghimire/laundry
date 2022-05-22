@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Add Stock
+            Inventory
         </h1>
     </section>
 
@@ -26,7 +26,7 @@
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="box col-md-4">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Create Stock</h3>
+                            <h3 class="box-title">Create Inventory</h3>
 
                           
                         </div>
@@ -37,7 +37,7 @@
                                 <label for="name" class="col-sm-3 control-label">Item</label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control" id="supply_id" name="supply_id" onchange="getRemaining()">
+                                    <select class="form-control" id="supply_id" name="supply_id">
                                     <option value="">Select One</option>                              
                                          <?php foreach ($stock as $p):?>
                                         <option value="<?php echo $p->id;?>"><?php echo $p->name;?></option>
@@ -50,7 +50,7 @@
                                 <label for="name" class="col-sm-3 control-label">Remaining Quantity</label>
 
                                 <div class="col-sm-9">
-                                    <input class="form-control" id="in_qty"  type="number" name="in_qty" readonly value="">
+                                    <input class="form-control" id="in_qty" placeholder="In quantity" type="number" name="in_qty" value="">
                                 </div>
                             </div> 
                             <!-- <div class="form-group">
@@ -83,7 +83,7 @@
             <div class="col-md-6">
                 <div class="box col-md-4">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Stock List</h3>
+                        <h3 class="box-title">Inventory List</h3>
 
                       
                     </div>
@@ -112,7 +112,7 @@
 
                         <div id="showtable" class="box-body">
                             <table id="level-table" class="table table-striped table-bordered">
-                                <tr><th> Name</th><th>In Quantity</th><th>Price</th><th>Used Quantity</th><th>ACTIONS</th></tr>
+                                <tr><th> Name</th><th>Reaming Quantity</th><th>Used Quantity</th><th>ACTIONS</th></tr>
 
                             </table>
                         </div>
@@ -144,25 +144,11 @@ $(document).ready(function() {
 
      $(":input").inputmask();
 
- $("#stock").addClass('active');
+ $("#stockinv").addClass('active');
 });
 
  
-    function getRemaining(){
-        var sid=$("#supply_id").val();
-         $.ajax({
 
-            method: 'get',
-            url: baseurl + "/stock/getRemaining?sid=" + sid,
-            success: function (response) {
-                
-            },
-            fail: function () {
-                alert("failed");
-            }
-        });
-
-    }
     function table() {
 
         var entry = $("#selectentry").val();
@@ -222,8 +208,7 @@ $(document).ready(function() {
 
             
             row.insertCell(0).innerHTML = data[i].name;
-            row.insertCell(1).innerHTML = data[i].in_qty;
-             row.insertCell(2).innerHTML = data[i].price;
+            row.insertCell(1).innerHTML = data[i].remainingqty;
               row.insertCell(3).innerHTML = data[i].used_qty;
             
            
@@ -239,7 +224,7 @@ $(document).ready(function() {
 
     function formSubmit(e) {
          e.preventDefault();
-        var ins =$("#in_qty").val();
+        var ins =$("#remainingqty").val();
         var out=$("#used_qty").val();
         
         // alert(out);
@@ -252,9 +237,9 @@ $(document).ready(function() {
        
         if ($('#id').val() == "") {
 
-            var url = baseurl + "/stock/creates";
+            var url = baseurl + "/stockinv/creates";
         } else {
-            var url = baseurl + "/stock/updates/" + id;
+            var url = baseurl + "/stockinv/updates/" + id;
         }
         $.ajax({
             method: "POST",
@@ -294,7 +279,7 @@ $(document).ready(function() {
         $("#submit").text("Update");
         $.ajax({
             method: 'get',
-            url: baseurl + "/stock/edit/" + id,
+            url: baseurl + "/stockinv/edit/" + id,
             success: function (resp) {
                 assignValues(resp);
                 $('#id').val(resp.id);
@@ -314,7 +299,7 @@ $(document).ready(function() {
         if (conf) {
             $.ajax({
                 method: 'get',
-                url: baseurl + "/stock/deletes/" + id,
+                url: baseurl + "/stockinv/deletes/" + id,
                 success: function (resp) {
                     var a = JSON.parse(resp);
                     toast(a);

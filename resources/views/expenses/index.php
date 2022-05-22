@@ -72,7 +72,8 @@
                                     <option value="electrycity">Electrycity</option> 
                                     <option value="rent"> Rent</option>                              
                                     <option value="salary">Salary</option> 
-                                    <option value="water">Water</option> 
+                                    <option value="water">Water</option>
+                                    <option value="phone">Phone Load</option>
                                     <option value="miscellaneous">Miscellaneous</option> 
                                        
                                       </select>

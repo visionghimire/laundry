@@ -96,30 +96,60 @@ class EmployeeController extends Controller {
     }
 
     public function report(){
-    return view("employee.report");
+        $emp=DB::table("employee")->get();
+
+    return view("employee.report")->with("emp",$emp);
  }
 
  public function getreport(Request $request){
     $fd=$request->input("fd");
       $td=$request->input("td");
-
+      $emp=$request->input("emp");
       if($fd!=null && $td!=null){
-         $item=DB::table("clock")->select('clock.*','employee.name','employee.address')
+        if($emp=="all"){
+            $item=DB::table("clock")->select('clock.*','employee.name','employee.address')
          ->join('employee','employee.id','=','clock.emp_id')
          ->where('clock.timestmp','LIKE',"$fd%") 
           ->orwhere('clock.timestmp','LIKE',"$td%") 
       // ->whereBetween('clock.timestmp', [$fd, $td]) 
       ->get();
+        }else{
+$item=DB::table("clock")->select('clock.*','employee.name','employee.address')
+         ->join('employee','employee.id','=','clock.emp_id')
+         ->where('clock.emp_id','=',$emp)
+         ->where('clock.timestmp','LIKE',"$fd%") 
+          ->orwhere('clock.timestmp','LIKE',"$td%") 
+      // ->whereBetween('clock.timestmp', [$fd, $td]) 
+      ->get();        }
+         
       }else if($fd!=null && $td==null){
+        if($emp=="all"){
          $item=$item=DB::table("clock")->select('clock.*','employee.name','employee.address')
          ->join('employee','employee.id','=','clock.emp_id')
       ->where('clock.timestmp','LIKE',"$fd%") 
       ->get();
+        }else{
+         $item=$item=DB::table("clock")->select('clock.*','employee.name','employee.address')
+
+         ->join('employee','employee.id','=','clock.emp_id')
+         ->where("clock.emp_id","=",$emp)
+      ->where('clock.timestmp','LIKE',"$fd%") 
+      ->get();
+        }
+
       }
       else{
-         $item=$item=DB::table("clock")->select('clock.*','employee.name','employee.address')
+        if($emp=="all"){
+            $item=$item=DB::table("clock")->select('clock.*','employee.name','employee.address')
          ->join('employee','employee.id','=','clock.emp_id')
       ->get();
+        }else{
+            $item=$item=DB::table("clock")->select('clock.*','employee.name','employee.address')
+         ->join('employee','employee.id','=','clock.emp_id')
+         ->where("clock.emp_id","=",$emp)
+      ->get();
+        }
+         
       }
 
       // dd($item);

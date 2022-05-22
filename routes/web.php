@@ -76,6 +76,16 @@ Route::get('deletes/{id}','StockController@deletes');
 Route::post('createBooking','StockController@createBooking');
 });
 
+Route::group(['prefix' =>'stockinventory','middleware' =>'checkSession'], function () {
+Route::get('/','StockInvController@index');
+Route::post('creates','StockInvController@creates');
+Route::get('list','StockInvController@lists');
+Route::get('getRemaining','StockInvController@getRemaining');
+Route::get('edit/{id}','StockInvController@edits');
+Route::post('updates/{id}','StockInvController@updates');
+Route::get('deletes/{id}','StockInvController@deletes');
+});
+
 Route::group(['prefix' =>'expenses','middleware' =>'checkSession'], function () {
 Route::get('/','ExpensesController@index');
 Route::post('creates','ExpensesController@creates');

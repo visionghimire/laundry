@@ -47,7 +47,21 @@
                                 <div class="col-sm-9">
                                     <input class="form-control" id="to_date" placeholder="" type="date" name="to_date" value="">
                                 </div>
+                            </div>  <br><br>
+
+                                <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">Employee</label>
+
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="empid" name="empid" >
+                                        <option value="all">All Employee</option>
+                                         <?php foreach ($emp as $p):?>
+                                        <option value="<?php echo $p->id;?>"><?php echo $p->name;?></option>
+                                      <?php endforeach;?>
+                                    </select>
+                                </div>
                             </div>  
+
 
                              
 
@@ -83,7 +97,8 @@ $(document).ready(function() {
  function getReport(){
     var fd=$("#from_date").val();
     var td=$("#to_date").val();
-    window.open(baseurl+"/employee/report/getReport?fd="+fd+"&td="+td, '_blank').focus();
+    var emp=$("#empid").val();
+    window.open(baseurl+"/employee/report/getReport?fd="+fd+"&td="+td+"&emp="+emp, '_blank').focus();
    
  }
 
