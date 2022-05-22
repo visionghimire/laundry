@@ -17,7 +17,9 @@ class Booking extends BaseModel
         'phone' => 'string|required',
         'pickupdate' => 'string|required',
         'timeslot' => 'string|required',
-        'address' => 'string|required',
+        'homenumber' => 'string|required',
+        'street' => 'string|required',
+        'barangay' => 'string|required',
         'city' => 'string|required',
         
 

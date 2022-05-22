@@ -215,8 +215,11 @@
       
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="form_name">Total Kg of Clothes* </label><br/>
+                    <label for="form_name">Estimate Laundry Weight </label><br/>
+                    <div class="popupnext" onclick="myFunction()">                
                                  <input  type="text" id="unit" name="unit" class="form-control" placeholder="in kg*" required="required" data-error="unit is required.">
+                                 <span class="popupnexttext" id="myPopup">This is only estimate weight. Weight can be changed by the laundry shop after pick up.</span>
+                                 </div>
                 </div>
             </div>
         </div>
@@ -240,7 +243,7 @@
             <div class="col-md-6" id="showCaptchaOnIOS-area">
                 <div class="form-group">
                     <label for="form_phone">Phone*</label>
-                    <input  type="tel" id="phone" name="phone" class="form-control" required="required" placeholder="Please enter your phone">
+                    <input  type="tel" id="phone" name="phone" class="form-control" required="required" placeholder="Please enter your phone*">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
@@ -272,17 +275,31 @@
                 </div>
         </div>
          <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-3">
                 <div class="form-group">
-                    <label for="form_address">Address *</label>
-                    <input  type="text" id="address" name="address" class="form-control"  placeholder="Please enter your full address*" required="required" data-error="Address is required.">
+                    <label for="form_address">Home Number *</label>
+                    <input  type="text" id="homenumber" name="homenumber" class="form-control"  placeholder="Home Number*" required="required" data-error="Home Number is required.">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
-              <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form-group">
-                    <label for="form_city">City *</label>
-                    <input  type="text" id="city" name="city" class="form-control" value=" " required="required">
+                    <label for="form_address">Street *</label>
+                    <input  type="text" id="street" name="street" class="form-control"  placeholder="Street*" required="required" data-error="Street is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="form_address">Barangay *</label>
+                    <input  type="text" id="barangay" name="barangay" class="form-control"  placeholder="Barangay*" required="required" data-error="Barangay is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                    <label for="form_city">City*</label>
+                    <input  type="text" id="city" name="city" class="form-control" placeholder="City*" required="required">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
@@ -633,6 +650,8 @@ We ensure that we find a smile on your face with every service that we provide.<
                 if(response[0]){
                     var htm="<table style='font-family: Courier, monospace; font-size:20px'><tr><td>Fullname:</td><td> &nbsp;&nbsp;&nbsp;&nbsp;  "+response[0].fullname+"</td></tr>";
                     htm += "<tr><td>Phone:</td><td> &nbsp;&nbsp;&nbsp;&nbsp;  "+response[0].phone+"</td></tr>";
+                    htm += "<tr><td>Pick Up Date:</td><td> &nbsp;&nbsp;&nbsp;&nbsp;  "+response[0].pickupdate+"</td></tr>";
+                    htm += "<tr><td>Time Slot:</td><td> &nbsp;&nbsp;&nbsp;&nbsp;  "+response[0].timeslot+"</td></tr>";
                     htm += "<tr><td>Unit(kg):</td><td> &nbsp;&nbsp;&nbsp;&nbsp;  "+response[0].unit+"</td></tr>";
                     htm += "<tr><td>Price per kg:</td><td> &nbsp;&nbsp;&nbsp;&nbsp;  "+response[0].price+"</td></tr>";
                     htm += "<tr><td>Total Amount:</td><td> &nbsp;&nbsp;&nbsp;&nbsp;  "+response[0].total+"</td></tr>";
@@ -771,6 +790,11 @@ We ensure that we find a smile on your face with every service that we provide.<
             $('#id').val('');
         }
     }
+
+    function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
 
 </script>
 	</body>
